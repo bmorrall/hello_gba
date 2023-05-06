@@ -1,0 +1,4 @@
+# Buildfiles
+/build
+*.elf
+*.gba
