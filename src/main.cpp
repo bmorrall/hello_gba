@@ -4,7 +4,10 @@
 #include "bn_display.h"
 #include "bn_sprite_ptr.h"
 #include "bn_bg_palettes.h"
+#include "bn_music_actions.h"
 #include "bn_sprite_text_generator.h"
+
+#include "bn_music_items.h"
 
 #include "bn_sprite_items_variable_8x16_font_red.h"
 #include "bn_sprite_items_variable_8x16_font_blue.h"
@@ -45,6 +48,11 @@ int main()
     bn::core::init();
 
     bn::bg_palettes::set_transparent_color(bn::color(16, 16, 16));
+
+    if(! bn::music::playing())
+    {
+        bn::music_items::crushing_enemies.play(0.6);
+    }
 
     while(true)
     {
