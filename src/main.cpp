@@ -12,6 +12,8 @@
 
 #include "common_variable_8x16_sprite_font.h"
 
+#include "hello_background.h"
+
 namespace
 {
     constexpr bn::fixed text_y_inc = 14;
@@ -19,6 +21,8 @@ namespace
 
     void text_hello_world()
     {
+        hello::background hello_background;
+
         bn::sprite_text_generator text_generator(common::variable_8x16_sprite_font);
         text_generator.set_center_alignment();
 
@@ -26,8 +30,11 @@ namespace
         text_generator.generate(0, -text_y_limit, "Hello World!!!", text_sprites);
         text_generator.generate(0, text_y_limit, "github.com/bmorrall", text_sprites);
 
+        hello_background.put_under_all();
+
         while(! bn::keypad::start_pressed())
         {
+            hello_background.update();
             bn::core::update();
         }
     }
